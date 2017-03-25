@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/senbud', function () {
+    return view('senbud');
+});
+
+Route::get('/pnk', function () {
+    return view('pnk');
+});
+
+Route::get('/depor', function () {
+    return view('depor');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

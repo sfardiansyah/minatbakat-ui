@@ -1,0 +1,114 @@
+html, body {
+    color: #fddf01;
+    font-family: 'Fredoka One', cursive;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+    z-index: 4;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.sect {
+    margin: 0;
+    height: 100%;
+    background-color: black;
+    padding: 0;
+    cursor: pointer;
+}
+
+.td-grad {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s ease;
+    background: rgb(0, 0, 0); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,0.2)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,0.2)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,0.2)); /*Fx 3.6-15*/
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6), rgba(0,0,0,0.2)); /*Standard*/
+}
+
+.position-abs {
+    position: absolute;
+}
+
+.m-b-md {
+    margin-top: 7%;
+    position: absolute;
+}
+
+.t-box {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 10%;
+    font-size: 2em;
+    color: #022d41;
+    z-index: 4;
+    opacity: 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease;
+}
+
+#senbud {
+    background: url("/image/senbud.jpeg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#pnk {
+    background: url("/image/pnk.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#depor {
+    background: url("/image/depor.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
