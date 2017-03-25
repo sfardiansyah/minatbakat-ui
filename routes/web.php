@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', 'HomeController@index');
+Route::get('/kompetisi', 'HomeController@viewCompetition');
+
+//admin section area (dashboard)
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/kompetisi/', 'CompetitionController@index')->name('viewCompetition');
+
+Route::get('/dashboard/kompetisi/tambah', 'CompetitionController@addForm')->name('addCompetition');
+Route::post('/dashboard/kompetisi/tambah', 'CompetitionController@add');
+
+Route::get('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@editForm')->name('editCompetition');
+Route::post('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@edit');

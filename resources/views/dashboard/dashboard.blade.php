@@ -1,0 +1,1 @@
+<a href="{{route('viewCompetition')}}">Kompetisi</a></br>
