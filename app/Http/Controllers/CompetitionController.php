@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\Competition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;          
@@ -27,7 +29,12 @@ class CompetitionController extends Controller
     * returns competition dashboard index page
     */
     public function index() {
-        return view('dashboard.competition.view')->with('data', Competition::all());
+        $result = Competition::all();
+        // $idx = 0;
+        foreach ($result as $row) {
+            $row['owner'] = User::where('id', $row['owner_id'])->get()[0]->name;            
+        }
+        return view('dashboard.competition.view')->with('data', $result);
     }
 
     /*
@@ -51,6 +58,8 @@ class CompetitionController extends Controller
             'status' => $request->status,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'group_id' => Auth::user()->group_id,
+            'owner_id' => Auth::user()->id
         ]);
 
         return redirect(route('viewCompetition'));
