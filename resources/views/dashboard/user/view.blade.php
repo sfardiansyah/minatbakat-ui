@@ -7,28 +7,23 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Competition List</div>                                
                 <div class="panel-body">
-                
-                      <div class="table-responsive">
+                  <div class="table-responsive">
                         <table class="table table-bordered">
                           <tr>
                           <th>id</th>
-                          <th>title</th>
-                          <th>description</th>
-                          <th>status</th>
-                          <th>start date</th>
-                          <th>end date</th>
-                          <th>created by</th>
+                          <th>name</th>
+                          <th>email</th>
+                          <th>group_id</th>
+                          <th>authority</th>
                           <th>action</th>
                           </tr>
                           @foreach ($data as $row)
                           <tr>
                             <td>{!!$row->id!!}</td>    
-                            <td>{!!$row->title!!}</td>
-                            <td>{!!$row->description!!}</td>
-                            <td>{!!$row->status!!}</td>
-                            <td>{!!$row->start_date!!}</td>
-                            <td>{!!$row->end_date!!}</td>
-                            <td>{!!$row->owner!!}</td>
+                            <td>{!!$row->name!!}</td>
+                            <td>{!!$row->email!!}</td>
+                            <td>{!!$row->group_id!!}</td>
+                            <td>{!!$row->authority!!}</td>                            
                             <td><a type="button" class="btn btn-primary btn-sm" href={{route('editCompetition', ['id' => $row->id])}}>Ubah</a></td>
                           </tr>
                           @endforeach  

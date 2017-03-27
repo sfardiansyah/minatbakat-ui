@@ -28,8 +28,8 @@ class CompetitionController extends Controller
     /*
     * returns competition dashboard index page
     */
-    public function index() {
-        $result = Competition::all();
+    public function index() {        
+        $result = Competition::where('group_id', Auth::user()->group_id)->get();
         // $idx = 0;
         foreach ($result as $row) {
             $row['owner'] = User::where('id', $row['owner_id'])->get()[0]->name;            
