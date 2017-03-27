@@ -12,7 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/bootstrap.min.css.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([

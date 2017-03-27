@@ -25,3 +25,11 @@ Route::post('/dashboard/kompetisi/tambah', 'CompetitionController@add');
 
 Route::get('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@editForm')->name('editCompetition');
 Route::post('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@edit');
+
+Route::get('/dashboard/groups/', 'GroupController@index')->name('viewGroup');
+
+Route::get('/dashboard/groups/tambah', 'GroupController@addForm')->name('addGroup');
+Route::post('/dashboard/groups/tambah', 'GroupController@add');
+
+Route::get('/dashboard/groups/ubah/{id}', 'GroupController@editForm')->name('editGroup');
+Route::post('/dashboard/groups/ubah/{id}', 'GroupController@edit');

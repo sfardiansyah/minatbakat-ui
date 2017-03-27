@@ -59,6 +59,21 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="group-id" class="col-md-4 control-label">Group ID</label>
+
+                            <div class="col-md-6">
+                                <input id="group-id" type="text" class="form-control" name="group-id" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="authority" class="col-md-4 control-label">Authority</label>
+
+                            <div class="col-md-6">
+                                <input id="authority" type="text" class="form-control" name="authority" required>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('group_id');
+            $table->integer('authority'); //0 = superuser, 1 = user
             $table->rememberToken();
             $table->timestamps();
         });
