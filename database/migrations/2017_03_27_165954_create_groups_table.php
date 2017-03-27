@@ -19,6 +19,13 @@ class CreateGroupsTable extends Migration
             $table->string('description');
             $table->timestamps();
         });
+
+        DB::table('groups')->insert(
+            array(
+                'name' => 'Superuser',
+                'description' => 'Grup superuser (administrator)'
+            )
+        );
     }
 
     /**
