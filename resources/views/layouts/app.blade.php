@@ -10,14 +10,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
+
     <!-- Styles -->
-    <link href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/js/app.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/js/script.js') }}"></script>
 
@@ -90,6 +91,5 @@
 
     <!-- Scripts -->
     <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

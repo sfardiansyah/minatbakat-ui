@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?php echo e(config('app.locale')); ?>">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,16 +10,22 @@
 
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
+
     <!-- Styles -->
-    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
-    <link href="/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link href="/css/app.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <script type="text/javascript" src="<?php echo e(URL::asset('/js/jquery-3.1.1.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(URL::asset('/js/app.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(URL::asset('/js/script.js')); ?>"></script>
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
-        ]); ?>;
+        ]); ?>
     </script>
 </head>
 <body>
@@ -53,8 +59,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         <?php if(Auth::guest()): ?>
-                            <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
-                            <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
+                            <li><a href="<?php echo e(url('/login')); ?>">Login</a></li>
+                            <li><a href="<?php echo e(url('/register')); ?>">Register</a></li>
                         <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -63,13 +69,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="<?php echo e(route('logout')); ?>"
+                                        <a href="<?php echo e(url('/logout')); ?>"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                        <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
                                             <?php echo e(csrf_field()); ?>
 
                                         </form>
@@ -86,6 +92,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
 </body>
 </html>

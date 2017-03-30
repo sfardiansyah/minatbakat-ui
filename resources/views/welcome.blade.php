@@ -8,7 +8,7 @@
         <title>Minat Bakat UI</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
 
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">

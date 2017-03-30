@@ -16,15 +16,15 @@ Route::get('/', function () {
 });
 
 Route::get('/senbud', function () {
-    return view('senbud');
+    return view('temp.senbud');
 });
 
 Route::get('/pnk', function () {
-    return view('pnk');
+    return view('temp.pnk');
 });
 
 Route::get('/depor', function () {
-    return view('depor');
+    return view('temp.depor');
 });
 
 Auth::routes();
