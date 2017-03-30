@@ -1,37 +1,42 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Auth::routes();
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 //public routes
 Route::get('/', 'HomeController@index');
 Route::get('/kompetisi', 'HomeController@viewCompetition');
+Route::get('/daftar/{id}', 'CompetitionController@register')->name('registerCompetition');
 
 //dashboard routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+//artikel
+Route::get('/dashboard/artikel', 'ArticleController@index')->name('viewArticle');
+Route::get('/dashboard/artikel/tambah', 'ArticleController@addShowForm')->name('addArticle');
+Route::post('/dashboard/artikel/tambah', 'ArticleController@add');
+Route::get('/dashboard/artikel/ubah/{id}', 'ArticleController@editShowForm')->name('editArticle');
+Route::post('/dashboard/artikel/ubah/{id}', 'ArticleController@edit');
+
 //kompetisi
 Route::get('/dashboard/kompetisi/', 'CompetitionController@index')->name('viewCompetition');
-Route::get('/dashboard/kompetisi/tambah', 'CompetitionController@addForm')->name('addCompetition');
+Route::get('/dashboard/kompetisi/tambah', 'CompetitionController@addShowForm')->name('addCompetition');
 Route::post('/dashboard/kompetisi/tambah', 'CompetitionController@add');
-Route::get('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@editForm')->name('editCompetition');
+Route::get('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@editShowForm')->name('editCompetition');
 Route::post('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@edit');
-
+Route::get('dashboard/kompetisi/pendaftar/{id}', 'CompetitionController@registrantShow')->name('showRegistrantCompetition');
 //grup
 Route::get('/dashboard/groups/', 'GroupController@index')->name('viewGroup');
-Route::get('/dashboard/groups/tambah', 'GroupController@addForm')->name('addGroup');
+Route::get('/dashboard/groups/tambah', 'GroupController@addShowForm')->name('addGroup');
 Route::post('/dashboard/groups/tambah', 'GroupController@add');
-Route::get('/dashboard/groups/ubah/{id}', 'GroupController@editForm')->name('editGroup');
+Route::get('/dashboard/groups/ubah/{id}', 'GroupController@editShowForm')->name('editGroup');
 Route::post('/dashboard/groups/ubah/{id}', 'GroupController@edit');
 
 //user

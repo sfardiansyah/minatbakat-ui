@@ -3,19 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <!-- <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>     -->
-    <script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>        
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -39,7 +34,11 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Minat Bakat UI
+                    </a>
+                    <a class="navbar-brand">|</a>
+                    <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                        Dashboard
                     </a>
                 </div>
 
@@ -81,10 +80,27 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+        <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Navigation</div>
+                <div class="panel-body">
+                    <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewArticle')}}">Artikel</a>
+                    <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewCompetition')}}">Kompetisi</a>
+                    <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewUser')}}">Pengguna</a>
+                    <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewGroup')}}">Grup</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">        
+            <div class="panel panel-default" id="container">
+             @yield('content')
+            </div>
+        </div>       
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>    
 </body>
 </html>

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use SSO\SSO;
+
 use App\User;
 use App\Competition;
+use App\Registrant;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;          
 
 class CompetitionController extends Controller
-{    
-    public function __construct()
+{      
+    private function validator($data) 
     {
-      // $this->middleware('auth');
-    }
-    
-    private function validator($data) {
         return Validator::make($data, [
             'title' => 'required|max:255',
             'description' => 'required',
@@ -24,30 +24,24 @@ class CompetitionController extends Controller
             'end_date' => 'required|date|after:start_date',            
         ]);
     }
-
-    /*
-    * returns competition dashboard index page
-    */
-    public function index() {        
+    
+    protected function index() 
+    {        
         $result = Competition::where('group_id', Auth::user()->group_id)->get();
-        // $idx = 0;
-        foreach ($result as $row) {
+        foreach ($result as $row) 
+        {
             $row['owner'] = User::where('id', $row['owner_id'])->get()[0]->name;            
         }
         return view('dashboard.competition.view')->with('data', $result);
     }
 
-    /*
-    * returns form to add new competition
-    */
-    public function addForm() {
-        return view('dashboard.competition.add');
+    protected function addShowForm() 
+    {
+        return view('dashboard.competition.add');                
     }
 
-    /*
-    * add competition to database
-    */
-    public function add(Request $request) {        
+    protected function add(Request $request) 
+    {        
         $request['start_date'] =  $request['start_date'] . ' ' . $request['start_time'];
         $request['end_date'] =  $request['end_date'] . ' ' . $request['end_time'];
         $this->validator($request->all())->validate();
@@ -65,10 +59,8 @@ class CompetitionController extends Controller
         return redirect(route('viewCompetition'));
     }
 
-    /*
-    * returns form to edit a competition
-    */
-    public function editForm($id) {        
+    protected function editShowForm($id) 
+    {
         $query = Competition::where('id', $id)->get();                
         $tmp = explode(' ', $query[0]['start_date']);                
         $query[0]['start_date'] = $tmp[0];
@@ -76,13 +68,11 @@ class CompetitionController extends Controller
         $tmp = explode(' ', $query[0]['end_date']);                
         $query[0]['end_date'] = $tmp[0];
         $query[0]['end_time'] = $tmp[1];                
-        return view('dashboard.competition.edit')->with('data', $query[0]);
+        return view('dashboard.competition.add')->with('data', $query[0]);
     }
 
-    /*
-    * save changes to database
-    */
-    public function edit(Request $request, $id) {
+    protected function edit(Request $request, $id)
+    {
         $request['start_date'] =  $request['start_date'] . ' ' . $request['start_time'];
         $request['end_date'] =  $request['end_date'] . ' ' . $request['end_time'];
         $this->validator($request->all())->validate();
@@ -96,4 +86,31 @@ class CompetitionController extends Controller
         $competition->save();        
         return redirect(route('viewCompetition'));
     }  
+
+    protected function register($id) 
+    {
+        $competition = Competition::findOrFail($id);
+        SSO::authenticate();
+        $user = SSO::getUser();
+
+        $count = Registrant::where('username', $user->username)->count();
+        if ($count == 0)
+        {
+            Registrant::create([                
+                'username' => $user->username,
+                'name' => $user->name,
+                'npm' => $user->npm,          
+                'faculty' => $user->faculty,
+                'study_program' => $user->study_program,
+                'educational_program' => $user->educational_program,
+                'competition_id' => $id
+            ]);
+        }
+
+        echo "registered";
+    }
+
+    protected function registrantShow($id) {
+        return view('dashboard.competition.registrant')->with('data', Registrant::where('competition_id', $id)->get());
+    }
 }

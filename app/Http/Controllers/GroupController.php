@@ -8,14 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class GroupController extends Controller
 {
-    protected function index() {
-        return view('dashboard.group.view')->with('data', Group::all());
-    }  
-
-    protected function addForm() {
-        return view('dashboard.group.add');
-    }
-
     private function validator($data) {
         return Validator::make($data, [
             'name' => 'required|max:32',
@@ -23,7 +15,17 @@ class GroupController extends Controller
         ]);
     }
 
-    public function add(Request $request) {                
+    protected function index() {
+        return view('dashboard.group.view')->with('data', Group::all());
+    }  
+
+    protected function addShowForm() 
+    {
+        return view('dashboard.group.add');
+    }
+
+    protected function add(Request $request) 
+    {                
         $this->validator($request->all())->validate();
         Group::create([
             'name' => $request->name,
@@ -33,13 +35,14 @@ class GroupController extends Controller
         return redirect(route('viewGroup'));
     }
 
-    protected function editForm($id) {
-        return view('dashboard.group.edit')->with('data', Group::where('id', $id)->get()[0]);
+    protected function editShowForm($id) 
+    {
+        return view('dashboard.group.add')->with('data', Group::where('id', $id)->get()[0]);
     }
 
-    public function edit(Request $request, $id) {        
+    protected function edit(Request $request, $id) 
+    {        
         $this->validator($request->all())->validate();
-
         $row = Group::find($id);
         $row->name = $request->name;        
         $row->description = $request->description;        
