@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('group_id');
-            $table->integer('authority'); //0 = superuser, 1 = user
+            $table->integer('group_id');     
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -29,8 +29,7 @@ class CreateUsersTable extends Migration
                 'name' => 'Administrator',
                 'email' => 'admin@localhost',
                 'password' => bcrypt('admin'),
-                'group_id' => 1,
-                'authority' => 0
+                'group_id' => 1,                
             )
         );
     }

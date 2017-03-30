@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -34,4 +35,25 @@ class UserController extends Controller
       return redirect(route('dashboard'));
     }
 
+    protected function addForm() {      
+      return view('dashboard.user.add')->with('groups', Group::all());
+    }    
+
+    protected function add(Request $request) {
+      Validator::make($request->all(), [
+          'name' => 'required|max:255',
+          'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:6|confirmed',
+          'group_id' => 'required|exists:groups,id'
+      ])->validate();
+
+      User::create([
+          'name' => $request->name,
+          'email' => $request->email,
+          'password' => bcrypt($request->password),
+          'group_id' => $request->group_id
+      ]);    
+
+      return redirect(route('viewUser'));
+    }
 }

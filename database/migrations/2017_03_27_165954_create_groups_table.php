@@ -22,7 +22,7 @@ class CreateGroupsTable extends Migration
 
         DB::table('groups')->insert(
             array(
-                'name' => 'Superuser',
+                'name' => 'Administrator',
                 'description' => 'Grup superuser (administrator)'
             )
         );

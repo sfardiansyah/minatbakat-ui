@@ -38,3 +38,7 @@ Route::post('/dashboard/groups/ubah/{id}', 'GroupController@edit');
 Route::get('/dashboard/users', 'UserController@index')->name('viewUser');
 Route::get('/dashboard/changePassword', 'UserController@changePasswordForm')->name('changePasswordUser');
 Route::post('/dashboard/changePassword', 'UserController@changePassword');
+Route::get('/dashboard/users/tambah', 'UserController@addForm')->name('addUser');
+Route::post('/dashboard/users/tambah', 'UserController@add');
+Route::get('/dashboard/users/ubah', 'UserController@editForm')->name('editUser');
+Route::post('/dashboard/users/ubah', 'UserController@edit');
