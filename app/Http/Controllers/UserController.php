@@ -7,10 +7,15 @@ use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;          
 
 class UserController extends Controller
 {     
+    public function __construct() {
+      $this->middleware('auth');
+    }
+
     private function validator($data) 
     {
         return Validator::make($data, [
@@ -35,6 +40,9 @@ class UserController extends Controller
 
     protected function index() 
     {
+      if (Gate::denies('admin-access')) 
+            return view('unauthorized');
+
       return view('dashboard.user.view')->with('data', User::all());
     }
 
@@ -56,11 +64,17 @@ class UserController extends Controller
 
     protected function addForm() 
     {      
+      if (Gate::denies('admin-access')) 
+            return view('unauthorized');
+
       return view('dashboard.user.add')->with('groups', Group::all());
     }    
 
     protected function add(Request $request) 
     {
+      if (Gate::denies('admin-access')) 
+            return view('unauthorized');
+
       $this->validator($request->all())->validate();
 
       User::create([

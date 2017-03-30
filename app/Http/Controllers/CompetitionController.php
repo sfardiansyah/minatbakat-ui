@@ -10,10 +10,15 @@ use App\Registrant;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;          
 
 class CompetitionController extends Controller
 {      
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     private function validator($data) 
     {
         return Validator::make($data, [
@@ -60,15 +65,18 @@ class CompetitionController extends Controller
     }
 
     protected function editShowForm($id) 
-    {
-        $query = Competition::where('id', $id)->get();                
-        $tmp = explode(' ', $query[0]['start_date']);                
-        $query[0]['start_date'] = $tmp[0];
-        $query[0]['start_time'] = $tmp[1];        
-        $tmp = explode(' ', $query[0]['end_date']);                
-        $query[0]['end_date'] = $tmp[0];
-        $query[0]['end_time'] = $tmp[1];                
-        return view('dashboard.competition.add')->with('data', $query[0]);
+    {            
+        $query = Competition::findOrFail($id);
+        if (Gate::denies('content-access', $query)) 
+            return view('unauthorized');
+
+        $tmp = explode(' ', $query['start_date']);                
+        $query['start_date'] = $tmp[0];
+        $query['start_time'] = $tmp[1];        
+        $tmp = explode(' ', $query['end_date']);                
+        $query['end_date'] = $tmp[0];
+        $query['end_time'] = $tmp[1];                
+        return view('dashboard.competition.add')->with('data', $query);
     }
 
     protected function edit(Request $request, $id)
@@ -77,7 +85,10 @@ class CompetitionController extends Controller
         $request['end_date'] =  $request['end_date'] . ' ' . $request['end_time'];
         $this->validator($request->all())->validate();
 
-        $competition = Competition::find($id);
+        $competition = Competition::findOrFail($id);        
+        if (Gate::denies('content-access', $competition)) 
+            return view('unauthorized');
+
         $competition->title = $request->title;        
         $competition->description = $request->description;
         $competition->status = $request->status;
@@ -89,6 +100,7 @@ class CompetitionController extends Controller
 
     protected function register($id) 
     {
+        //TODO CHECK TIME AND CHECK IS ID EXISTS
         $competition = Competition::findOrFail($id);
         SSO::authenticate();
         $user = SSO::getUser();
@@ -110,7 +122,11 @@ class CompetitionController extends Controller
         echo "registered";
     }
 
-    protected function registrantShow($id) {
+    protected function registrantShow($id) {        
+        $competition = Competition::findOrFail($id);        
+        if (Gate::denies('content-access', $competition)) 
+            return view('unauthorized');
+
         return view('dashboard.competition.registrant')->with('data', Registrant::where('competition_id', $id)->get());
     }
 }

@@ -32,6 +32,7 @@ Route::post('/dashboard/kompetisi/tambah', 'CompetitionController@add');
 Route::get('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@editShowForm')->name('editCompetition');
 Route::post('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@edit');
 Route::get('dashboard/kompetisi/pendaftar/{id}', 'CompetitionController@registrantShow')->name('showRegistrantCompetition');
+
 //grup
 Route::get('/dashboard/groups/', 'GroupController@index')->name('viewGroup');
 Route::get('/dashboard/groups/tambah', 'GroupController@addShowForm')->name('addGroup');

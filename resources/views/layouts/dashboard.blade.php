@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Styles -->
+    <!-- Styles -->    
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -74,6 +74,11 @@
                                     </li>
                                 </ul>
                             </li>
+                            <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
                         @endif
                     </ul>
                 </div>
@@ -88,8 +93,10 @@
                 <div class="panel-body">
                     <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewArticle')}}">Artikel</a>
                     <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewCompetition')}}">Kompetisi</a>
+                    @can('admin-access')
                     <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewUser')}}">Pengguna</a>
                     <a class="btn btn-primary btn-block" class="button button-primary" href="{{route('viewGroup')}}">Grup</a>
+                    @endcan
                 </div>
             </div>
         </div>
