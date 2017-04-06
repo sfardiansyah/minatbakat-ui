@@ -1,24 +1,31 @@
 @extends('layouts.dashboard')
 
+@section('page_title')
+Daftar Grup
+@endsection
+
 @section('content')
-<div class="panel-heading">Group List</div>
-<div class="panel-body">
-  <div class="table-responsive">
-    <table class="table table-bordered">
+<div class="table-responsive">
+  <table class="table table-bordered">
     <tr>
-      <th>id</th><th>name</th><th>description</th><th>actions</th>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>Deskripsi</th>      
+      <th>Aksi</th>
     </tr>
     @foreach ($data as $row)
     <tr>
       <td>{!!$row->id!!}</td>
       <td>{!!$row->name!!}</td>
       <td>{!!$row->description!!}</td>
-      <td><a type="button" class="btn btn-primary btn-sm" href={{route('editGroup', ['id' => $row->id])}}>Ubah</a></td>
+      <td class="col-md-1">
+        <a type="button" class="btn btn-primary btn-block btn-sm" href="{{route('editGroup', ['id' => $row->id])}}">Ubah</a>        
+        <a type="button" class="btn btn-primary btn-block btn-sm" href="TODO">Hapus</a>
+      </td>
     </tr>
     @endforeach  
-    </table>
-  </div>
-  <hr>
-  <a type="button" class="btn btn-primary" href="{{route('addGroup')}}">Tambah Grup</a>
-</div>            
+  </table>
+</div>
+<hr>
+<a type="button" class="btn btn-primary pull-right" href="{{route('addGroup')}}">Tambah Grup</a>
 @endsection

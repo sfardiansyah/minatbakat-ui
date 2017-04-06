@@ -1,14 +1,17 @@
 @extends('layouts.dashboard')
 
+@section('page_title')
+Buat Artikel
+@endsection
+
 @section('content')
-<div class="panel-heading">Add New Competition</div>
-<div class="panel-body">
+<div class="col-md-12">
 <form class="form-horizontal" role="form" method="POST" action="">   
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-        <label for="title" class="col-md-2 control-label">title</label>
-        <div class="col-md-9">
+        <label for="title" class="col-md-1 control-label">Judul</label>
+        <div class="col-md-11">
             <input id="title" type="text" class="form-control" name="title" value="{{old('title', isset($data->title) ? $data->title : '')}}" required autofocus>
             @if ($errors->has('title'))
             <span class="help-block">
@@ -19,9 +22,9 @@
     </div> 
                                             
     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-        <label for="content" class="col-md-2 control-label">content</label>
+        <label for="content" class="col-md-1 control-label">Konten</label>
 
-        <div class="col-md-9">
+        <div class="col-md-11">
             <div *ngIf="textareaInitialized">
                 <textarea name="content" id="content">                        
                 {{old('content', isset($data->content) ? $data->content : '')}}
@@ -38,9 +41,9 @@
     </div> 
 
     <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-        <label for="status" class="col-md-2 control-label">status</label>
+        <label for="status" class="col-md-1 control-label">Status</label>
 
-        <div class="col-md-9">
+        <div class="col-md-11">
             <input id="status" type="text" class="form-control" name="status" value="{{old('status', isset($data->status) ? $data->status : '')}}" required autofocus>
 
             @if ($errors->has('status'))
@@ -52,12 +55,9 @@
     </div> 
    
     <hr>
-    <div class="form-group">
-        <div class="col-md-1">
-            <button type="submit" class="btn btn-primary">
-                Submit
-            </button>
-        </div>
-    </div>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary ">Submit</button>
+    </div>    
 </form>
+</div>
 @endsection
