@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use DateTimeZone;
+
 use SSO\SSO;
 
 use App\User;
@@ -98,13 +101,26 @@ class CompetitionController extends Controller
         return redirect(route('viewCompetition'));
     }  
 
+    //user fails to register due to Auth Middleware
     protected function register($id) 
     {
-        //TODO CHECK TIME AND CHECK IS ID EXISTS
         $competition = Competition::findOrFail($id);
+
+        //check time eligibility        
+        $current = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
+        $start = new DateTime($competition->start_date, new DateTimeZone('Asia/Jakarta'));
+        $stop = new DateTime($competition->end_date, new DateTimeZone('Asia/Jakarta'));
+        
+        if ($start > $current || $current >= $stop)
+            return response()->json([
+                    "message" => "invalid_time"
+                ]);                
+
+        //SSO authentication
         SSO::authenticate();
         $user = SSO::getUser();
 
+        //avoid double registering
         $count = Registrant::where('username', $user->username)->count();
         if ($count == 0)
         {
@@ -117,9 +133,13 @@ class CompetitionController extends Controller
                 'educational_program' => $user->educational_program,
                 'competition_id' => $id
             ]);
+        } else {
+            return response()->json([
+                    "message" => "already_registered"
+                ]);                
         }
 
-        echo "registered";
+        echo json_encode(["message"=>"success"]);
     }
 
     protected function registrantShow($id) {        
