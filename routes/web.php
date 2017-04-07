@@ -24,6 +24,7 @@ Route::get('/dashboard/artikel/tambah', 'ArticleController@addShowForm')->name('
 Route::post('/dashboard/artikel/tambah', 'ArticleController@add');
 Route::get('/dashboard/artikel/ubah/{id}', 'ArticleController@editShowForm')->name('editArticle');
 Route::post('/dashboard/artikel/ubah/{id}', 'ArticleController@edit');
+Route::post('/dashboard/artikel/hapus/{id}', 'ArticleController@delete')->name('deleteArticle');
 
 //kompetisi
 Route::get('/dashboard/kompetisi/', 'CompetitionController@index')->name('viewCompetition');

@@ -33,9 +33,7 @@ Buat Artikel
             <script type="text/javascript">CKEDITOR.replace('content')</script>
 
             @if ($errors->has('content'))
-            <span class="help-block">
-                <strong>{{ $errors->first('content') }}</strong>
-            </span>
+            <span class="help-block"><strong>{{ $errors->first('content') }}</strong></span>
             @endif
         </div>
     </div> 
@@ -44,12 +42,13 @@ Buat Artikel
         <label for="status" class="col-md-1 control-label">Status</label>
 
         <div class="col-md-11">
-            <input id="status" type="text" class="form-control" name="status" value="{{old('status', isset($data->status) ? $data->status : '')}}" required autofocus>
+            <select class="form-control" name="status" value="{{old('status', isset($data->status) ? $data->status : '')}}">
+                <option value=1>Diterbitkan</option>
+                <option value=2>Disembunyikan</option>
+            </select>            
 
             @if ($errors->has('status'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('status') }}</strong>
-                </span>
+            <span class="help-block"><strong>{{ $errors->first('status') }}</strong></span>
             @endif
         </div>
     </div> 
