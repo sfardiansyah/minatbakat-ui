@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('page_title')
-Daftar Grup
+Daftar Pengguna
 @endsection
 
 @section('content')
@@ -21,7 +21,14 @@ Daftar Grup
       <td>{!!$row->email!!}</td>
       <td>{!!$row->group_id!!}</td>                            
       <td class="col-md-1">        
-        <a type="button" class="btn btn-primary btn-block btn-sm" href="TODO">Hapus</a>
+        @if($row->id!=1)        
+        <a type="button" class="btn btn-primary btn-block btn-sm" href="" onclick="event.preventDefault();document.getElementById('delete-user-{{$row->id}}').submit();">Hapus</a>        
+
+          <form id="delete-user-{{$row->id}}" action="{{ route('deleteUser', ['id'=>$row->id]) }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+              <input type="hidden" value="{{$row->id}}" name="id">
+          </form>
+        @endif
       </td>
     </tr>
     @endforeach  

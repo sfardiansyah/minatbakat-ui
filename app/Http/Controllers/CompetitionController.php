@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
-use DateTimeZone;
-
-use SSO\SSO;
-
 use App\User;
 use App\Competition;
-use App\Registrant;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,7 +66,7 @@ class CompetitionController extends Controller
     {            
         $query = Competition::findOrFail($id);
         if (Gate::denies('content-access', $query)) 
-            return view('unauthorized');
+            return response('unauthorized access', 403);
 
         $tmp = explode(' ', $query['start_date']);                
         $query['start_date'] = $tmp[0];
@@ -91,7 +85,7 @@ class CompetitionController extends Controller
 
         $competition = Competition::findOrFail($id);        
         if (Gate::denies('content-access', $competition)) 
-            return view('unauthorized');
+            return response('unauthorized access', 403);
 
         $competition->title = $request->title;        
         $competition->description = $request->description;
@@ -100,57 +94,5 @@ class CompetitionController extends Controller
         $competition->end_date = $request->end_date;
         $competition->save();        
         return redirect(route('viewCompetition'));
-    }  
-
-    //user fails to register due to Auth Middleware
-    protected function register($id) 
-    {
-        $competition = Competition::findOrFail($id);
-
-        //check time eligibility        
-        $current = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
-        $start = new DateTime($competition->start_date, new DateTimeZone('Asia/Jakarta'));
-        $stop = new DateTime($competition->end_date, new DateTimeZone('Asia/Jakarta'));
-        
-        if ($start > $current || $current >= $stop)
-            return response()->json([
-                    "message" => "invalid_time"
-                ]);                
-
-        //SSO authentication
-        SSO::authenticate();
-        $user = SSO::getUser();
-
-        //avoid double registering
-        $count = Registrant::where('username', $user->username)->count();
-        if ($count == 0)
-        {
-            Registrant::create([                
-                'username' => $user->username,
-                'name' => $user->name,
-                'npm' => $user->npm,          
-                'faculty' => $user->faculty,
-                'study_program' => $user->study_program,
-                'educational_program' => $user->educational_program,
-                'competition_id' => $id
-            ]);
-        } else {
-            return response()->json([
-                    "message" => "already_registered"
-                ]);                
-        }
-
-        echo json_encode(["message"=>"success"]);
-    }
-
-    protected function registrantShow($id) {        
-        $competition = Competition::findOrFail($id);        
-        if (Gate::denies('content-access', $competition)) 
-            return view('unauthorized');
-
-        return view('dashboard.competition.registrant')->with([
-            'data' => Registrant::where('competition_id', $id)->get(),
-            'title' => $competition->title,
-            ]);
-    }
+    }     
 }

@@ -13,7 +13,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //public routes
 Route::get('/', 'HomeController@index');
 Route::get('/kompetisi', 'HomeController@viewCompetition');
-Route::get('/daftar/{id}', 'CompetitionController@register')->name('registerCompetition');
+Route::get('/daftar/{id}', 'RegistrantController@register')->name('registerCompetition');
 
 //dashboard routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
@@ -32,7 +32,8 @@ Route::get('/dashboard/kompetisi/tambah', 'CompetitionController@addShowForm')->
 Route::post('/dashboard/kompetisi/tambah', 'CompetitionController@add');
 Route::get('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@editShowForm')->name('editCompetition');
 Route::post('/dashboard/kompetisi/ubah/{id}', 'CompetitionController@edit');
-Route::get('dashboard/kompetisi/pendaftar/{id}', 'CompetitionController@registrantShow')->name('showRegistrantCompetition');
+
+Route::get('dashboard/kompetisi/pendaftar/{id}', 'RegistrantController@registrantShow')->name('showRegistrantCompetition');
 
 //grup
 Route::get('/dashboard/groups/', 'GroupController@index')->name('viewGroup');
@@ -40,6 +41,7 @@ Route::get('/dashboard/groups/tambah', 'GroupController@addShowForm')->name('add
 Route::post('/dashboard/groups/tambah', 'GroupController@add');
 Route::get('/dashboard/groups/ubah/{id}', 'GroupController@editShowForm')->name('editGroup');
 Route::post('/dashboard/groups/ubah/{id}', 'GroupController@edit');
+Route::post('/dahsboard/groups/hapus/{id}', 'GroupController@delete')->name('deleteGroup');
 
 //user
 Route::get('/dashboard/users', 'UserController@index')->name('viewUser');
@@ -49,3 +51,4 @@ Route::get('/dashboard/users/tambah', 'UserController@addForm')->name('addUser')
 Route::post('/dashboard/users/tambah', 'UserController@add');
 Route::get('/dashboard/users/ubah', 'UserController@editForm')->name('editUser');
 Route::post('/dashboard/users/ubah', 'UserController@edit');
+Route::post('/dahsboard/users/hapus/{id}', 'UserController@delete')->name('deleteUser');

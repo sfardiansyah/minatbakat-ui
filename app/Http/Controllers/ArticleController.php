@@ -82,7 +82,7 @@ class ArticleController extends Controller
     {
         $data = Article::findOrFail($id);        
         if (Gate::denies('content-access', $data))
-            return view('unauthorized');        
+            return response('unauthorized access', 403);
 
         return view('dashboard.article.add')->with('data', $data);
     }
@@ -126,7 +126,7 @@ class ArticleController extends Controller
 
         $post = Article::findOrFail($id);
         if (Gate::denies('content-access', $post))
-            return response('unauthorized access', 403);        
+            return response('unauthorized access', 403);
         $post->status = 0;
         $post->save();
 

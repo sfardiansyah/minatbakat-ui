@@ -43,7 +43,7 @@ class UserController extends Controller
       if (Gate::denies('admin-access')) 
             return view('unauthorized');
 
-      return view('dashboard.user.view')->with('data', User::all());
+      return view('dashboard.user.view')->with('data', User::where('status', 1)->get());
     }
 
     protected function changePasswordForm() 
@@ -85,5 +85,17 @@ class UserController extends Controller
       ]);    
 
       return redirect(route('viewUser'));
+    }
+
+    protected function delete(Request $request, $id)
+    {
+        if (Gate::denies('admin-access') || $id == 1)
+          return response('unauthorized access', 403);
+
+        $row = User::findOrFail($id);
+        $row->status = 0;
+        $row->save();
+
+        return redirect(route('viewUser'));    
     }
 }

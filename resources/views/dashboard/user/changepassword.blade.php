@@ -11,7 +11,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                            <label for="old_password" class="col-md-4 control-label">old_password</label>
+                            <label for="old_password" class="col-md-4 control-label">Password Lama</label>
 
                             <div class="col-md-6">
                                 <input id="old_password" type="password" class="form-control" name="old_password" value="" required autofocus>
@@ -25,7 +25,7 @@
                         </div>    
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">password</label>
+                            <label for="password" class="col-md-4 control-label">Password Baru</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" required autofocus>
@@ -39,7 +39,7 @@
                         </div>                  
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password_confirmation" class="col-md-4 control-label">password_confirmation</label>
+                            <label for="password_confirmation" class="col-md-4 control-label">Ulangi Password Baru</label>
 
                             <div class="col-md-6">
                                 <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" required autofocus>
