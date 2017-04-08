@@ -39,8 +39,9 @@ class CompetitionController extends Controller
         foreach ($result as $row) 
         {
             $row['owner'] = User::where('id', $row['owner_id'])->get()[0]->name;            
+            $row['registrant_count'] = Registrant::where('competition_id', $row['id'])->count();
         }
-        return view('dashboard.competition.view')->with('data', $result);
+        return view('dashboard.competition.view')->with(['data'=>$result, 'postname'=>'lol']);
     }
 
     protected function addShowForm() 
@@ -147,6 +148,9 @@ class CompetitionController extends Controller
         if (Gate::denies('content-access', $competition)) 
             return view('unauthorized');
 
-        return view('dashboard.competition.registrant')->with('data', Registrant::where('competition_id', $id)->get());
+        return view('dashboard.competition.registrant')->with([
+            'data' => Registrant::where('competition_id', $id)->get(),
+            'title' => $competition->title,
+            ]);
     }
 }

@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('page_title')
+{{isset($data) ? 'Ubah Kompetisi' : 'Buat Kompetisi' }}
+@endsection
+
 @section('content')
 <div class="col-md-12">
 <form class="form-horizontal" role="form" method="POST" action="">   

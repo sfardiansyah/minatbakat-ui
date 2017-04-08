@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('page_title')
-Pendaftar Kompetisi: {{$judul}}
+Pendaftar Kompetisi {{$title}}
 @endsection
 
 @section('content')

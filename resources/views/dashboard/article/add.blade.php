@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('page_title')
-Buat Artikel
+{{isset($data) ? 'Ubah Artikel' : 'Buat Artikel' }}
 @endsection
 
 @section('content')
