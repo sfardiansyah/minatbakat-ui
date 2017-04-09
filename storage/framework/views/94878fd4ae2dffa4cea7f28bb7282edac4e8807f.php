@@ -29,7 +29,7 @@
     </script>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="<?php echo e($name); ?>-color-back">
         <nav class="navbar navbar-default navbar-static-top <?php echo e($name); ?>-color-dark">
             <div class="container">
                 <div class="navbar-header">
