@@ -12,6 +12,7 @@
     <link href="{{asset('admin/vendor/morrisjs/morris.css')}}" rel="stylesheet">    
     <link href="{{asset('admin/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('js/bootbox.min.js')}}"></script>    
     <script src="{{ asset('ckeditor/ckeditor.js')}}"></script> 
 
     <script>
@@ -70,12 +71,10 @@
           <div class="row"><div class="col-lg-12"><h1 class="page-header">@yield('page_title')</h1></div></div>            
           @yield('content')                  
         </div>            
-    </div>
+    </div>    
     <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin/vendor/metisMenu/metisMenu.min.js')}}"></script>
-    <script src="{{asset('admin/vendor/raphael/raphael.min.js')}}"></script>
-    <script src="{{asset('admin/vendor/morrisjs/morris.min.js')}}"></script>
-    <script src="{{asset('admin/data/morris-data.js')}}"></script>
+    <script src="{{asset('admin/vendor/raphael/raphael.min.js')}}"></script>    
     <script src="{{asset('admin/dist/js/sb-admin-2.js')}}"></script>    
 </body>
 </html>

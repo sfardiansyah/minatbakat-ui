@@ -52,3 +52,5 @@ Route::post('/dashboard/users/tambah', 'UserController@add');
 Route::get('/dashboard/users/ubah', 'UserController@editForm')->name('editUser');
 Route::post('/dashboard/users/ubah', 'UserController@edit');
 Route::post('/dahsboard/users/hapus/{id}', 'UserController@delete')->name('deleteUser');
+
+Route::post('/dashboard/upload', 'FileController@upload')->name('uploadFile');
