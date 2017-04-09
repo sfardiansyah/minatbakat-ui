@@ -3,6 +3,7 @@ html, body {
     font-weight: 100;
     height: 100vh;
     margin: 0;
+    background-color: black;
 }
 
 p {
@@ -257,4 +258,62 @@ p {
 .list-group {
     height: 200px;
     overflow-y: scroll;
+}
+
+@media (max-width: 1024px) {
+  .col-xs-4 {
+    height: 25vh;
+    width: 100vw;
+  }
+
+  .invis {
+    height: 25%;
+    width: 100%;
+  }
+
+  .gone {
+    background: rgba(0,0,0,0.4);
+  }
+
+  #depor {
+    background: url("/image/depor.jpg") no-repeat center 0;
+    background-size: cover;
+  }
+
+  .rotate {
+    -webkit-transform: rotate(-90deg);  /* Safari */
+    -moz-transform: rotate(-90deg);     /* Firefox */
+    -ms-transform: rotate(-90deg);      /* IE */   
+    -o-transform: rotate(-90deg);       /* Opera */
+    width: 25vh;
+    height: 15%;
+    top: 42.5%;
+    left: -8vh;
+  }
+
+  .t-box {
+    font-size: 10px;
+  }
+
+  .carousel .item {
+    height: 35vh;
+  }
+}
+
+@media (max-width: 414px) {
+  .title-big {
+    font-size: 35px;
+  }
+
+  .title-small-1 {
+    font-size: 20px;
+  }
+
+  .title-small-2 {
+    font-size: 15px;
+  }
+
+  .m-b-md {
+    margin-top: 12%;
+  }
 }

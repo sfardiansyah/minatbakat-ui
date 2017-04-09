@@ -45,21 +45,22 @@
         
 
         <div class="sect row position-abs" style="width: 100%">
-            <a href="/senbud" id="senbud" class="sect col-md-4">
+            <div class="invis"></div>
+            <a href="/senbud" id="senbud" class="sect col-xs-4">
                 <div class="td-grad"></div>
-                <div class="t-box flex-center position-ref" style="background-color: #ff414d">
+                <div class="t-box flex-center position-ref rotate" style="background-color: #ff414d">
                     Seni dan Budaya
                 </div>
             </a>
-            <a href="/pnk" id="pnk" class="sect col-md-4">
-                <div class="td-grad"></div>
-                <div class="t-box flex-center position-ref" style="background-color: #fddf01">
+            <a href="/pnk" id="pnk" class="sect col-xs-4">
+                <div class="td-grad gone"></div>
+                <div class="t-box flex-center position-ref rotate" style="background-color: #fddf01">
                     Pendidikan dan Keilmuan
                 </div>
             </a>
-            <a href="depor" id="depor" class="sect col-md-4">
-                <div class="td-grad"></div>
-                <div class="t-box flex-center position-ref" style="background-color: #1aa6b7">
+            <a href="depor" id="depor" class="sect col-xs-4">
+                <div class="td-grad gone"></div>
+                <div class="t-box flex-center position-ref rotate" style="background-color: #1aa6b7">
                     Olahraga
                 </div>
             </a>
