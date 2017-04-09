@@ -10,12 +10,12 @@ use DateTimeZone;
 use SSO\SSO;
 
 use App\Registrant;
+use App\Competition;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
-class RegistrantContoller extends Controller
+class RegistrantController extends Controller
 {
     protected function register($id) 
     {

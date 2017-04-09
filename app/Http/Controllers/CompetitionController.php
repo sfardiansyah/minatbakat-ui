@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Competition;
+use App\Registrant;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,12 +29,16 @@ class CompetitionController extends Controller
     }
     
     protected function index() 
-    {        
+    {            
         $result = Competition::where('group_id', Auth::user()->group_id)->get();
         foreach ($result as $row) 
         {
             $row['owner'] = User::where('id', $row['owner_id'])->get()[0]->name;            
             $row['registrant_count'] = Registrant::where('competition_id', $row['id'])->count();
+
+            //show 100st caracther of the description
+            $content_length = strlen($row['description']);
+            $row['description'] = substr(strip_tags($row['description']), 0, min(150, $content_length)) . (($content_length > 100) ? '...' : '');
         }
         return view('dashboard.competition.view')->with(['data'=>$result, 'postname'=>'lol']);
     }
