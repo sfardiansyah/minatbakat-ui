@@ -34,8 +34,10 @@
             @endif
         </div> -->
 
-        <div class="content flex-center">
-            <div class="title m-b-md" >
+        <div class="content text-center m-b-md">
+            <div class="title title-small-1">Selamat Datang</div>
+            <div class="title title-small-2">di Laman Web</div>
+            <div class="title title-big">
                 MINAT BAKAT UI
             </div>
         </div>

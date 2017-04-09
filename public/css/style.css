@@ -19,6 +19,12 @@ p {
     justify-content: center;
 }
 
+.text-center {
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
 .position-ref {
     position: relative;
 }
@@ -33,11 +39,28 @@ p {
     text-align: center;
 }
 
+.title-small-1 {
+  font-size: 40px;
+  font-family: 'Titillium Web', sans-serif;
+  color: #f5f8fa;
+}
+
+.title-small-2 {
+  font-size: 30px;
+  font-family: 'Titillium Web', sans-serif;
+  color: #f5f8fa;
+}
+
 .title {
-    font-family: 'Fredoka One';
-    color: rgb(255, 221, 0);
-    font-size: 84px;
-    z-index: 4;
+  z-index: 4;
+  margin-top: -1%;
+}
+
+.title-big {
+  font-family: 'Fredoka One';
+  color: rgb(255, 221, 0);
+  font-size: 84px;
+  margin-top: -2%;
 }
 
 .bottom {
@@ -132,8 +155,10 @@ p {
 }
 
 .m-b-md {
-    margin-top: 7%;
+    margin-top: 3%;
     position: absolute;
+    width: 100%;
+    clear: both;
 }
 
 .t-box {

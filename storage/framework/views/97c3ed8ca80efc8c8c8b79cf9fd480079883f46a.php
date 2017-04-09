@@ -8,7 +8,7 @@
         <title>Minat Bakat UI</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
 
         <!-- Styles -->
         <link href="/css/app.css" rel="stylesheet">
@@ -34,8 +34,10 @@
             <?php endif; ?>
         </div> -->
 
-        <div class="content flex-center">
-            <div class="title m-b-md" >
+        <div class="content text-center m-b-md">
+            <div class="title title-small-1">Selamat Datang</div>
+            <div class="title title-small-2">di Laman Web</div>
+            <div class="title title-big">
                 MINAT BAKAT UI
             </div>
         </div>

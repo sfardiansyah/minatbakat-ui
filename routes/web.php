@@ -23,6 +23,10 @@ Route::get('/pnk', function () {
     return view('temp.pnk');
 });
 
+Route::get('/page', function () {
+    return view('page');
+});
+
 Route::get('/depor', function () {
     return view('temp.depor');
 });

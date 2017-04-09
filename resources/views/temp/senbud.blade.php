@@ -171,7 +171,7 @@
         </div>
     </div>
 </div>
-<section id="contribute" class="position-ref full-height unscroll">
+<!-- <section id="contribute" class="position-ref full-height unscroll">
   <div class="content text-center mar-top">
       <div class="title">
         Kami Butuh Bantuanmu!
@@ -195,5 +195,5 @@
 
   <div class="gradient-black-side direction-top flex-center"></div>
   <div class="gradient-black direction flex-center"></div>
-</section>
+</section> -->
 @endsection
