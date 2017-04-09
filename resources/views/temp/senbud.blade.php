@@ -59,8 +59,8 @@
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading">Berita & Artikel</div>
-                <div class="panel-body">
+                <div class="panel-heading {{ $name }}-color-dark">Berita & Artikel</div>
+                <div class="panel-body {{ $name }}-color-light">
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -115,8 +115,8 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading">Kompetisi</div>
-                <div class="panel-body">
+                <div class="panel-heading {{ $name }}-color-dark">Kompetisi</div>
+                <div class="panel-body {{ $name }}-color-light">
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">

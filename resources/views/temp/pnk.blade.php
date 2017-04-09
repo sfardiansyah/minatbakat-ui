@@ -59,8 +59,8 @@
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading">Berita & Artikel</div>
-                <div class="panel-body">
+                <div class="panel-heading {{ $name }}-color-dark">Berita & Artikel</div>
+                <div class="panel-body {{ $name }}-color-light">
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -115,8 +115,8 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading">Kompetisi</div>
-                <div class="panel-body">
+                <div class="panel-heading {{ $name }}-color-dark">Kompetisi</div>
+                <div class="panel-body {{ $name }}-color-light">
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -171,7 +171,7 @@
         </div>
     </div>
 </div>
-<section id="contribute" class="position-ref full-height unscroll">
+<!-- <section id="contribute" class="position-ref full-height unscroll">
   <div class="content text-center mar-top">
       <div class="title">
         Kami Butuh Bantuanmu!
@@ -195,5 +195,5 @@
 
   <div class="gradient-black-side direction-top flex-center"></div>
   <div class="gradient-black direction flex-center"></div>
-</section>
+</section> -->
 @endsection

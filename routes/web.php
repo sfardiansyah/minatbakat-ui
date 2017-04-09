@@ -16,19 +16,19 @@ Route::get('/', function () {
 });
 
 Route::get('/senbud', function () {
-    return view('temp.senbud');
+    return view('temp.senbud', ['name' => 'senbud']);
 });
 
 Route::get('/pnk', function () {
-    return view('temp.pnk');
+    return view('temp.pnk', ['name' => 'pnk']);
 });
 
 Route::get('/page', function () {
-    return view('page');
+    return view('page', ['name' => 'pnk']);
 });
 
 Route::get('/depor', function () {
-    return view('temp.depor');
+    return view('temp.depor', ['name' => 'depor']);
 });
 
 Auth::routes();
