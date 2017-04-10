@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ title_case($name) }} | {{ config('app.name', 'Laravel') }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
 
@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        #{{ $name }}-list {
+            background-color: #fddf01;
+            color: #022d41;
+        }
+    </style>
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
@@ -56,29 +63,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
+                        <li><a href="{{ url('/senbud') }}" id="senbud-list">Senbud</a></li>
+                        <li><a href="{{ url('/pnk') }}" id="pnk-list">PnK</a></li>
+                        <li><a href="{{ url('/depor') }}" id="depor-list">Depor</a></li>
                     </ul>
                 </div>
             </div>

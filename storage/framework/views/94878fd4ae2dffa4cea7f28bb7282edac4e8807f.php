@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title><?php echo e(title_case($name)); ?> | <?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
 
@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        #<?php echo e($name); ?>-list {
+            background-color: #fddf01;
+            color: #022d41;
+        }
+    </style>
 
     <!-- Scripts -->
     <script type="text/javascript" src="<?php echo e(URL::asset('/js/jquery-3.1.1.min.js')); ?>"></script>
@@ -57,32 +64,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        <?php if(Auth::guest()): ?>
-                            <li><a href="<?php echo e(url('/login')); ?>">Login</a></li>
-                            <li><a href="<?php echo e(url('/register')); ?>">Register</a></li>
-                        <?php else: ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="<?php echo e(url('/logout')); ?>"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
-                                            <?php echo e(csrf_field()); ?>
-
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        <?php endif; ?>
+                        <li><a href="<?php echo e(url('/senbud')); ?>" id="senbud-list">Senbud</a></li>
+                        <li><a href="<?php echo e(url('/pnk')); ?>" id="pnk-list">PnK</a></li>
+                        <li><a href="<?php echo e(url('/depor')); ?>" id="depor-list">Depor</a></li>
                     </ul>
                 </div>
             </div>
