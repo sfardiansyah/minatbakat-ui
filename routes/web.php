@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/blog', function () {
+    return view('temp.blog', ['name' => 'blog']);
+});
+
 Route::get('/senbud', function () {
     return view('temp.senbud', ['name' => 'senbud']);
 });
