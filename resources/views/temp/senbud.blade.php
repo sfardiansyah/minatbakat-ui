@@ -63,51 +63,17 @@
                 <div class="panel-body {{ $name }}-color-light">
                     <div class="card">
                         <ul class="list-group list-group-flush">
+                            @foreach($articles as $article)
                             <li class="list-group-item">
                                 <div class="list-image">
-                                    <img src="/image/car4.jpg">
+                                    <img src="/image/car4.jpg"><!-- todo -->
                                 </div>
-                                <h5>Cras justo odio</h5>
+                                <a href="{{route('readArticle', ['id'=>$article->id, 'dept'=>'senbud'])}}"><h5>{{$article->title}}</h5></a>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                    {{str_limit(strip_tags($article->content), 100)}}
                                 </p>
                             </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
+                            @endforeach                            
                         </ul>
                     </div>
                 </div>
@@ -119,51 +85,17 @@
                 <div class="panel-body {{ $name }}-color-light">
                     <div class="card">
                         <ul class="list-group list-group-flush">
+                            @foreach($competitions as $competition)
                             <li class="list-group-item">
                                 <div class="list-image">
                                     <img src="/image/car4.jpg">
                                 </div>
-                                <h5>Cras justo odio</h5>
+                                <a href="{{route('readCompetition', ['id'=>$competition->id, 'dept'=>'senbud'])}}"><h5>{{$competition->title}}</h5></a>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                    {{str_limit(strip_tags($competition->description), 100)}}
                                 </p>
                             </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-image">
-                                    <img src="/image/car4.jpg">
-                                </div>
-                                <h5>Cras justo odio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                </p>
-                            </li>
+                            @endforeach                           
                         </ul>
                     </div>
                 </div>

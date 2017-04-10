@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ title_case($name) }} | {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ isset($name) ? title_case($name) : '' }} | {{ config('app.name', 'Laravel') }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
 
@@ -18,7 +18,7 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <style type="text/css">
-        #{{ $name }}-list {
+        #{{ isset($name) ? $name : '' }}-list {
             background-color: #fddf01;
             color: #022d41;
         }
@@ -36,8 +36,8 @@
     </script>
 </head>
 <body>
-    <div id="app" class="{{ $name }}-color-back">
-        <nav class="navbar navbar-default navbar-static-top {{ $name }}-color-dark">
+    <div id="app" class="{{ isset($name) ? $name : '' }}-color-back">
+        <nav class="navbar navbar-default navbar-static-top {{ isset($name) ? $name : '' }}-color-dark">
             <div class="container">
                 <div class="navbar-header">
 

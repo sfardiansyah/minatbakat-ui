@@ -42,11 +42,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
-<<<<<<< HEAD
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-=======
-                                        <input type="checkbox" name="remember"> Remember Me
->>>>>>> frontend
                                     </label>
                                 </div>
                             </div>
@@ -57,12 +53,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
-<<<<<<< HEAD
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-=======
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
->>>>>>> frontend
                                     Forgot Your Password?
                                 </a>
                             </div>

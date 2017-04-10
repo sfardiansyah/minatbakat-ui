@@ -27,6 +27,27 @@ class CreateGroupsTable extends Migration
                 'description' => 'Grup superuser (administrator)'
             )
         );
+
+        DB::table('groups')->insert(
+            array(
+                'name' => 'Senbud',
+                'description' => 'Departemen Seni dan Budaya'
+            )
+        );
+
+        DB::table('groups')->insert(
+            array(
+                'name' => 'PnK',
+                'description' => 'Departemen Pendidikan dan Keilmuan'
+            )
+        );
+
+        DB::table('groups')->insert(
+            array(
+                'name' => 'Depor',
+                'description' => 'Departemen Olahraga'
+            )
+        );
     }
 
     /**

@@ -56,17 +56,11 @@ Route::post('/dahsboard/users/hapus/{id}', 'UserController@delete')->name('delet
 Route::post('/dashboard/upload', 'FileController@upload')->name('uploadFile');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/{dept}', 'HomeController@showDept');
 
-Route::get('/blog', function () {
-    return view('temp.blog', ['name' => 'blog']);
-});
-
-Route::get('/senbud', function () {
-    return view('temp.senbud', ['name' => 'senbud']);
-});
+Route::get('/{dept}/article/{id}', 'HomeController@showArticle')->name('readArticle');
+Route::get('/{dept}/competition/{id}', 'HomeController@showCompetition')->name('readCompetition');
 
 Route::get('/pnk', function () {
     return view('temp.pnk', ['name' => 'pnk']);
@@ -80,6 +74,6 @@ Route::get('/depor', function () {
     return view('temp.depor', ['name' => 'depor']);
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+Route::get('/blog', function () {
+    return view('temp.blog', ['name' => 'blog']);
+});
