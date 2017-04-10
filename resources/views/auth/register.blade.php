@@ -59,6 +59,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <hr>
                         <div class="form-group">
                             <label for="group-id" class="col-md-4 control-label">Group ID</label>
@@ -74,6 +75,8 @@
                                 <input id="authority" type="text" class="form-control" name="authority" required>
                             </div>
                         </div>
+=======
+>>>>>>> frontend
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

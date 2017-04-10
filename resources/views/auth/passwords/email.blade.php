@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+<<<<<<< HEAD
+=======
+<!-- Main Content -->
+>>>>>>> frontend
 @section('content')
 <div class="container">
     <div class="row">

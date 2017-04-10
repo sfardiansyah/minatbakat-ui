@@ -10,22 +10,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
+
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <!-- <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>     -->
-    <script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
     <!-- Scripts -->
+    <script type="text/javascript" src="{{ URL::asset('/js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('/js/script.js') }}"></script>
+
     <script>
-        window.Laravel = {!! json_encode([
+        window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
-        ]) !!};
+        ]); ?>
     </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+    <div id="app" class="{{ $name }}-color-back">
+        <nav class="navbar navbar-default navbar-static-top {{ $name }}-color-dark">
             <div class="container">
                 <div class="navbar-header">
 
@@ -53,7 +58,6 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>                            
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -62,14 +66,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('changePasswordUser') }}">Change Password</a>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -85,6 +88,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
 </body>
 </html>

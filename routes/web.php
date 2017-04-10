@@ -54,3 +54,28 @@ Route::post('/dashboard/users/ubah', 'UserController@edit');
 Route::post('/dahsboard/users/hapus/{id}', 'UserController@delete')->name('deleteUser');
 
 Route::post('/dashboard/upload', 'FileController@upload')->name('uploadFile');
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/senbud', function () {
+    return view('temp.senbud', ['name' => 'senbud']);
+});
+
+Route::get('/pnk', function () {
+    return view('temp.pnk', ['name' => 'pnk']);
+});
+
+Route::get('/page', function () {
+    return view('page', ['name' => 'pnk']);
+});
+
+Route::get('/depor', function () {
+    return view('temp.depor', ['name' => 'depor']);
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
