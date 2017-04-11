@@ -20,7 +20,9 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                @if ($article->featured_img != '')
+                <img class="img-responsive" src="{{$article->featured_img}}" alt="">
+                @endif
 
                 <hr>
 

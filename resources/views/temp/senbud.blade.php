@@ -66,7 +66,9 @@
                             @foreach($articles as $article)
                             <li class="list-group-item">
                                 <div class="list-image">
-                                    <img src="/image/car4.jpg"><!-- todo -->
+                                    @if ($article->featured_img != '')                                    
+                                    <img class="img-responsive" src="{{$article->featured_img}}" alt="">
+                                    @endif
                                 </div>
                                 <a href="{{route('readArticle', ['id'=>$article->id, 'dept'=>'senbud'])}}"><h5>{{$article->title}}</h5></a>
                                 <p>
