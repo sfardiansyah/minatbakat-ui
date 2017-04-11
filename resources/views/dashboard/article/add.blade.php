@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="col-md-12">
-<form class="form-horizontal" role="form" method="POST" action="">   
+<form class="form-horizontal" role="form" method="POST" action="" enctype='multipart/form-data'>   
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -52,7 +52,20 @@
             @endif
         </div>
     </div> 
-   
+    
+    <div class="form-group{{ $errors->has('headline') ? ' has-error' : '' }}">
+        <label for="headline" class="col-md-1 control-label">Featured Image</label>
+
+        <div class="col-md-11">            
+            <input type="file" accept="image/*" name="headline">
+
+            @if ($errors->has('headline'))
+            <span class="help-block"><strong>{{ $errors->first('headline') }}</strong></span>
+            @endif
+        </div>
+    </div> 
+
+    
     <hr>
     <div class="pull-right">
         <button type="submit" class="btn btn-primary ">Submit</button>

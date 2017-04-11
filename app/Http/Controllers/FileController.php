@@ -16,7 +16,7 @@ class FileController extends Controller
   protected function upload(Request $request) {    
     $valid = false;
     $ext = $request->upload->getClientOriginalExtension();        
-    $allowed = ['jpg', 'jpeg', 'bmp', 'png', 'gif'];
+    $allowed = ['jpg', 'jpeg', 'bmp', 'png', 'gif'];    
 
     foreach ($allowed as $item)
       if ($ext == $item) 

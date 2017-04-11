@@ -19,7 +19,8 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->integer('owner_id');
             $table->integer('group_id');
-            $table->integer('status');            
+            $table->integer('status');  
+            $table->string('featured_img');
             $table->timestamps();
         });
     }

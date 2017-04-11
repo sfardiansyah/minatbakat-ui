@@ -20,7 +20,8 @@ class ArticleController extends Controller
         return Validator::make($data, [        
             'title' => 'required|max:255',
             'content' => 'required',            
-            'status' => 'required|integer' ,
+            'status' => 'required|integer',
+            'headline' => 'sometimes|mimes:jpg,jpeg,bmp,png',
         ]);
     }
 
@@ -53,6 +54,33 @@ class ArticleController extends Controller
     }
 
     /**
+        Returns image file path after saving. or empty string if the image is violating rules.
+
+        @param $image image file
+        @return file path relative to website root
+    */
+    private function processImage($image) {
+        if (!$image) 
+            return ''; //discard image
+
+        $valid = false;
+        $ext = $image->getClientOriginalExtension();        
+        $allowed = ['jpg', 'jpeg', 'bmp', 'png', 'gif'];    
+
+        foreach ($allowed as $item)
+            if ($ext == $item) 
+                $valid = true;          
+                
+        if (!$valid) 
+            return ''; //discard image
+        
+        $folder = public_path('media');
+        $filename = Auth::user()->id.'_image_'.time().'.'.$ext;
+        $image->move($folder, $filename);                 
+        return url('media/' . $filename);        
+    }
+
+    /**
         Add new post to database.
 
         @param $request request
@@ -60,15 +88,16 @@ class ArticleController extends Controller
     protected function add(Request $request) 
     {
         $this->validator($request->all())->validate();
-        
+            
         Article::create([
             'title' => $request->title,
             'content' => $request->content,
             'owner_id' => Auth::user()->id,
             'group_id' => Auth::user()->group_id,
+            'featured_img' => $this->processImage($request->file('headline')),
             'status' => $request->status
         ]);
-
+        
         return redirect(route('viewArticle'));
     }
 
@@ -101,9 +130,13 @@ class ArticleController extends Controller
         if (Gate::denies('content-access', $article))
             return response('unauthorized access', 403);
 
+        $filePath = $this->processImage($request->file('headline'));
+
         $article->title = $request->title;
         $article->content = $request->content;
         $article->status = $request->status;
+        if ($filePath != '')
+            $article->featured_img = $filePath;
         $article->save();
 
         return redirect(route('viewArticle'));

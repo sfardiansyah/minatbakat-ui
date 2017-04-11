@@ -21,20 +21,38 @@ class HomeController extends Controller
       if ($dept == 'senbud') {
         return view('temp.senbud', [
           'name' => 'senbud',
-          'articles' => Article::where('group_id', 2)->limit(5)->get(),
-          'competitions' => Competition::where('group_id', 2)->limit(5)->get()
+          'articles' => Article::where('group_id', 2)
+            ->where('status', 1)
+            ->limit(5)
+            ->get(),
+          'competitions' => Competition::where('group_id', 2)
+            ->where('status', 1)
+            ->limit(5)
+            ->get()
           ]);
       } else if ($dept == 'pnk') {
         return view('temp.pnk', [
           'name' => 'pnk',
-          'articles' => Article::where('group_id', 3)->limit(5)->get(),
-          'competitions' => Competition::where('group_id', 3)->limit(5)->get()
+          'articles' => Article::where('group_id', 3)
+            ->where('status', 1)
+            ->limit(5)
+            ->get(),
+          'competitions' => Competition::where('group_id', 3)
+            ->where('status', 1)
+            ->limit(5)
+            ->get()
           ]);
       } else if ($dept == 'depor') {
         return view('temp.depor', [
           'name' => 'depor',
-          'articles' => Article::where('group_id', 4)->limit(5)->get(),
-          'competitions' => Competition::where('group_id', 4)->limit(5)->get()
+          'articles' => Article::where('group_id', 4)
+            ->where('status', 1)
+            ->limit(5)
+            ->get(),
+          'competitions' => Competition::where('group_id', 4)
+            ->where('status', 1)
+            ->limit(5)
+            ->get()
           ]);
       }
     }

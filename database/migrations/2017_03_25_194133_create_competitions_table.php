@@ -20,7 +20,7 @@ class CreateCompetitionsTable extends Migration
             $table->timestamp('end_date')->nullable();            
             $table->text('description');
             $table->integer('status');
-
+            $table->string('featured_img');
             $table->integer('group_id');
             $table->integer('owner_id');
             $table->timestamps();
