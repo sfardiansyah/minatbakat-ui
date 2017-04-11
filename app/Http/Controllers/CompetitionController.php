@@ -25,6 +25,7 @@ class CompetitionController extends Controller
             'status' => 'required|integer',
             'start_date' => 'required|date',     
             'end_date' => 'required|date|after:start_date',            
+            'headline' => 'sometimes|mimes:jpg,jpeg,bmp,png'
         ]);
     }
     
@@ -48,6 +49,33 @@ class CompetitionController extends Controller
         return view('dashboard.competition.add');                
     }
 
+    /**
+        Returns image file path after saving. or empty string if the image is violating rules.
+
+        @param $image image file
+        @return file path relative to website root
+    */
+    private function processImage($image) {
+        if (!$image) 
+            return ''; //discard image
+
+        $valid = false;
+        $ext = $image->getClientOriginalExtension();        
+        $allowed = ['jpg', 'jpeg', 'bmp', 'png', 'gif'];    
+
+        foreach ($allowed as $item)
+            if ($ext == $item) 
+                $valid = true;          
+                
+        if (!$valid) 
+            return ''; //discard image
+        
+        $folder = public_path('media');
+        $filename = Auth::user()->id.'_image_'.time().'.'.$ext;
+        $image->move($folder, $filename);                 
+        return url('media/' . $filename);        
+    }
+
     protected function add(Request $request) 
     {        
         $request['start_date'] =  $request['start_date'] . ' ' . $request['start_time'];
@@ -60,6 +88,7 @@ class CompetitionController extends Controller
             'status' => $request->status,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'featured_img' => $this->processImage($request->file('headline')),
             'group_id' => Auth::user()->group_id,
             'owner_id' => Auth::user()->id
         ]);
@@ -92,11 +121,14 @@ class CompetitionController extends Controller
         if (Gate::denies('content-access', $competition)) 
             return response('unauthorized access', 403);
 
+        $filePath = $this->processImage($request->file('headline'));
         $competition->title = $request->title;        
         $competition->description = $request->description;
         $competition->status = $request->status;
         $competition->start_date = $request->start_date;
         $competition->end_date = $request->end_date;
+        if ($filePath != '')
+            $competition->featured_img = $filePath;
         $competition->save();        
         return redirect(route('viewCompetition'));
     }     

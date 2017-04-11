@@ -21,6 +21,9 @@ class RegistrantController extends Controller
     {
         $competition = Competition::findOrFail($id);
 
+        if ($competition->status != 1) { //is not opened
+            echo json_encode(["message"=>"not_open_for_registration"]);
+        }
         //check time eligibility        
         $current = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
         $start = new DateTime($competition->start_date, new DateTimeZone('Asia/Jakarta'));

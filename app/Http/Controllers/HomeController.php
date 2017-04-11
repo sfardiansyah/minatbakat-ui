@@ -62,6 +62,10 @@ class HomeController extends Controller
 
     public function showArticle($dept, $id) {
       $article = Article::findOrFail($id);      
+      if ($article->status != 1) 
+      {
+        return response('article not found.', 404);
+      }
       $date = new DateTime($article->created_at, new DateTimeZone('UTC'));
       $date->setTimeZone(new DateTimeZone('Asia/Jakarta'));
       $formatted = $date->format('F j, o \a\t g:i a');      
@@ -76,6 +80,10 @@ class HomeController extends Controller
 
     public function showCompetition($dept, $id) {
       $competition = Competition::findOrFail($id);      
+      if ($competition->status != 1) 
+      {
+        return response('article not found.', 404);
+      }
       $date = new DateTime($competition->created_at, new DateTimeZone('UTC'));
       $date->setTimeZone(new DateTimeZone('Asia/Jakarta'));
       $formatted = $date->format('F j, o \a\t g:i a');      

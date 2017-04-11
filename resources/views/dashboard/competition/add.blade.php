@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="col-md-12">
-<form class="form-horizontal" role="form" method="POST" action="">   
+<form class="form-horizontal" role="form" method="POST" action="" enctype='multipart/form-data'>   
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -45,12 +45,14 @@
         <label for="status" class="col-md-1 control-label">Status</label>
 
         <div class="col-md-11">
-            <input id="status" type="text" class="form-control" name="status" value="{{old('status', isset($data->status) ? $data->status : '')}}" required autofocus>
+            <select class="form-control" name="status" value="{{old('status', isset($data->status) ? $data->status : '')}}">
+                <option value=1>Dibuka</option>
+                <option value=2>Disembunyikan</option>
+                <option value=3>Ditutup</option>
+            </select>            
 
             @if ($errors->has('status'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('status') }}</strong>
-                </span>
+            <span class="help-block"><strong>{{ $errors->first('status') }}</strong></span>
             @endif
         </div>
     </div> 
@@ -110,6 +112,18 @@
             @endif
         </div>
     </div>                         
+
+    <div class="form-group{{ $errors->has('headline') ? ' has-error' : '' }}">
+        <label for="headline" class="col-md-1 control-label">Featured Image</label>
+
+        <div class="col-md-11">            
+            <input type="file" accept="image/*" name="headline">
+
+            @if ($errors->has('headline'))
+            <span class="help-block"><strong>{{ $errors->first('headline') }}</strong></span>
+            @endif
+        </div>
+    </div> 
 
     <hr>    
         <div class="pull-right">
