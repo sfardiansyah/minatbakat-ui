@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo e(config('app.locale')); ?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e(title_case($name)); ?> | <?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title><?php echo e(isset($name) ? title_case($name) : ''); ?> | <?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Titillium+Web" rel="stylesheet">
 
@@ -18,7 +18,7 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <style type="text/css">
-        #<?php echo e($name); ?>-list {
+        #<?php echo e(isset($name) ? $name : ''); ?>-list {
             background-color: #fddf01;
             color: #022d41;
         }
@@ -36,8 +36,8 @@
     </script>
 </head>
 <body>
-    <div id="app" class="<?php echo e($name); ?>-color-back">
-        <nav class="navbar navbar-default navbar-static-top <?php echo e($name); ?>-color-dark">
+    <div id="app" class="<?php echo e(isset($name) ? $name : ''); ?>-color-back">
+        <nav class="navbar navbar-default navbar-static-top <?php echo e(isset($name) ? $name : ''); ?>-color-dark">
             <div class="container">
                 <div class="navbar-header">
 

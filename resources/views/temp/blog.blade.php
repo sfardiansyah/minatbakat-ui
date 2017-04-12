@@ -5,29 +5,35 @@
         <div class="row">
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-                <h1>{{$article->title}}</h1>
+                <div class="well">
+                    <h1>{{$article->title}}</h1>
 
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#">{{$author}}</a>
-                </p>
+                    <!-- Author -->
+                    <p class="lead">
+                        by <a href="#">{{$author}}</a>
+                    </p>
 
-                <hr>
+                    <hr>
 
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on {{$date}}</p>
+                    <!-- Date/Time -->
+                    <p><span class="glyphicon glyphicon-time"></span> Posted on {{$date}}</p>
 
-                <hr>
+                    <hr>
 
-                <!-- Preview Image -->
-                @if ($article->featured_img != '')
-                <img class="img-responsive" src="{{$article->featured_img}}" alt="">
-                @endif
+                    <!-- Preview Image -->
+                    @if ($article->featured_img != '')
+                    <img class="img-responsive" src="{{$article->featured_img}}" alt="">
+                    @endif
 
-                <hr>
+                    <hr>
 
-                <!-- Post Content -->
-                {!!isset($article->content) ? $article->content : $article->description!!}
+                    <!-- Post Content -->
+                    {!!isset($article->content) ? $article->content : $article->description!!}
+                    @if ($type == 'competition')
+                    <hr>
+                    <button type="button" class="btn btn-success btn-daftar">Daftar Kompetisi</button>
+                    @endif
+                </div>
             </div>
 
             <!-- Blog Sidebar Widgets Column -->

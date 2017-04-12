@@ -75,5 +75,5 @@ Route::get('/depor', function () {
 });
 
 Route::get('/blog', function () {
-    return view('temp.blog', ['name' => 'blog']);
+    return view('temp.blog', ['name' => 'senbud']);
 });

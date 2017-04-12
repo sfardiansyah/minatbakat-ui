@@ -71,10 +71,11 @@ class HomeController extends Controller
       $formatted = $date->format('F j, o \a\t g:i a');      
 
       return view('temp.blog', [
-        'dept' => $dept, 
+        'name' => $dept, 
         'article' => $article,
         'date' => $formatted,
-        'author' => User::findOrFail($article->owner_id)->name
+        'author' => User::findOrFail($article->owner_id)->name,
+        'type' => 'article'
         ]);
     }
 
@@ -89,10 +90,11 @@ class HomeController extends Controller
       $formatted = $date->format('F j, o \a\t g:i a');      
 
       return view('temp.blog', [
-        'dept' => $dept, 
+        'name' => $dept, 
         'article' => $competition,
         'date' => $formatted,
-        'author' => User::findOrFail($competition->owner_id)->name
+        'author' => User::findOrFail($competition->owner_id)->name,
+        'type' => 'competition'
         ]);
     }
 }

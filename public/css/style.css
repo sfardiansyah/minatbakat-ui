@@ -13,12 +13,22 @@ p {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.well li {
+  font-weight: initial !important;
+  font-style: initial;
+  text-align: justify;
+}
+
 footer {
     margin: 50px 0;
 }
 
 .full-height {
     height: 100vh;
+}
+
+.well p{
+  text-align: justify;
 }
 
 a {
@@ -66,6 +76,8 @@ a {
 .title {
   z-index: 4;
   margin-top: -1%;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 .title-big {
@@ -88,6 +100,10 @@ a {
   top: 0;
   width: 100%;
   z-index: -1;
+}
+
+.btn-daftar {
+  width: 100%;
 }
 
 .direction-top {
@@ -205,7 +221,6 @@ body::-webkit-scrollbar-thumb {
  
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    border-radius: 10px;
 }
 
 .panel {
@@ -218,7 +233,6 @@ body::-webkit-scrollbar-thumb {
 
  
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
     background-color: lightgrey;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
